@@ -16,13 +16,13 @@
             <section class="panel">
                 <div class="section-header">
                     <span class="dot pink"></span>
-                    <h2>환경 및 캐릭터 설정</h2>
+                    <h2 class="label-text">환경 및 캐릭터 설정</h2>
                 </div>
                 
                 <div class="config-container">
                     <div class="char-box room-config">
-                        <span class="cfg-label">채팅방 배경색</span>
-                        <div class="cfg-item">
+                        <span class="label-text">채팅방 배경색</span>
+                        <div class="cfg-item-wrap">
                             <input type="color" id="roomBgColor" value="#abc1d1">
                             <span id="roomBgValue" class="hex-code">#ABC1D1</span>
                         </div>
@@ -30,36 +30,46 @@
 
                     <div class="char-row">
                         <div class="char-box">
+                            <span class="label-text">캐릭터 1 설정</span>
                             <input type="text" id="rawName1" placeholder="인식 이름">
                             <input type="text" id="realName1" placeholder="백업 이름">
                             <input type="text" id="img1" placeholder="이미지 URL">
                             <div class="color-grid">
                                 <div class="cfg-item">
-                                    <span class="mini-txt">배경</span>
-                                    <input type="color" id="bgColor1" value="#ffffff">
-                                    <span id="bgValue1" class="hex-code">#FFFFFF</span>
+                                    <span class="label-text">배경</span>
+                                    <div class="cfg-item-wrap">
+                                        <input type="color" id="bgColor1" value="#ffffff">
+                                        <span id="bgValue1" class="hex-code">#FFFFFF</span>
+                                    </div>
                                 </div>
                                 <div class="cfg-item">
-                                    <span class="mini-txt">글자</span>
-                                    <input type="color" id="textColor1" value="#333333">
-                                    <span id="textValue1" class="hex-code">#333333</span>
+                                    <span class="label-text">글자</span>
+                                    <div class="cfg-item-wrap">
+                                        <input type="color" id="textColor1" value="#333333">
+                                        <span id="textValue1" class="hex-code">#333333</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div class="char-box">
+                            <span class="label-text">캐릭터 2 설정</span>
                             <input type="text" id="rawName2" placeholder="인식 이름">
                             <input type="text" id="realName2" placeholder="백업 이름">
                             <input type="text" id="img2" placeholder="이미지 URL">
                             <div class="color-grid">
                                 <div class="cfg-item">
-                                    <span class="mini-txt">배경</span>
-                                    <input type="color" id="bgColor2" value="#fee500">
-                                    <span id="bgValue2" class="hex-code">#FEE500</span>
+                                    <span class="label-text">배경</span>
+                                    <div class="cfg-item-wrap">
+                                        <input type="color" id="bgColor2" value="#fee500">
+                                        <span id="bgValue2" class="hex-code">#FEE500</span>
+                                    </div>
                                 </div>
                                 <div class="cfg-item">
-                                    <span class="mini-txt">글자</span>
-                                    <input type="color" id="textColor2" value="#333333">
-                                    <span id="textValue2" class="hex-code">#333333</span>
+                                    <span class="label-text">글자</span>
+                                    <div class="cfg-item-wrap">
+                                        <input type="color" id="textColor2" value="#333333">
+                                        <span id="textValue2" class="hex-code">#333333</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -68,31 +78,31 @@
 
                 <div class="section-header">
                     <span class="dot pink"></span>
-                    <h2>대화 원본 입력</h2>
+                    <h2 class="label-text">대화 원본 입력</h2>
                 </div>
-                <textarea id="dialogueInput"></textarea>
+                <textarea id="dialogueInput" placeholder="내용을 입력하세요."></textarea>
                 
                 <div class="button-group">
-                    <button id="btnDialogue" class="btn btn-black">ⓐ dialogue</button>
-                    <button id="btnConvert" class="btn btn-black">ⓑ convert</button>
-                    <button id="btnHtml" class="btn btn-pink">ⓒ html 변환</button>
+                    <button id="btnDialogue" class="main-btn btn-black">ⓐ dialogue</button>
+                    <button id="btnConvert" class="main-btn btn-black">ⓑ convert</button>
+                    <button id="btnHtml" class="main-btn btn-pink">ⓒ html 변환</button>
                 </div>
             </section>
 
             <section class="panel">
                 <div class="section-header">
                     <span class="dot black"></span>
-                    <h2>미리보기</h2>
+                    <h2 class="label-text">미리보기</h2>
                 </div>
                 <div id="previewOutput" class="preview-box"></div>
 
                 <div class="section-header">
                     <span class="dot black"></span>
-                    <h2>HTML 소스 코드</h2>
+                    <h2 class="label-text">HTML 소스 코드</h2>
                 </div>
                 <div class="output-group">
-                    <textarea id="htmlCodeOutput" readonly></textarea>
-                    <button id="copyButton" class="btn btn-white">결과 코드 복사하기</button>
+                    <textarea id="htmlCodeOutput" readonly placeholder="코드가 생성됩니다."></textarea>
+                    <button id="copyButton" class="main-btn btn-copy">결과 코드 복사하기</button>
                 </div>
             </section>
         </div>
