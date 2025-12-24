@@ -10,12 +10,14 @@ function initColorSync() {
     colorMappings.forEach(item => {
         const inputEl = document.getElementById(item.input);
         const displayEl = document.getElementById(item.display);
+        if(!inputEl) return;
         
         inputEl.addEventListener('input', () => {
             const color = inputEl.value.toUpperCase();
             displayEl.textContent = color;
             if (item.isRoom) {
-                document.getElementById('previewOutput').style.backgroundColor = color;
+                const preview = document.getElementById('previewOutput');
+                if(preview) preview.style.backgroundColor = color;
             }
         });
     });
@@ -27,9 +29,13 @@ function processDialogue() {
     const input = document.getElementById('dialogueInput').value;
     if (!rawA || !rawB) { alert("인식 이름을 입력해 주세요."); return; }
 
+    // '작성일시' 삭제 로직은 제외하고 기존 필터링만 유지
     let processed = input
-        .replace(/프로필/g, '').replace(/\d{4}\.\d{2}\.\d{2}\./g, '').replace(/\d{2}:\d{2}/g, '')
-        .replace(/답글|수정|삭제|활동 정지|작성자|URL 복사/g, '').replace(/\|/g, '');
+        .replace(/프로필/g, '')
+        .replace(/\d{4}\.\d{2}\.\d{2}\./g, '')
+        .replace(/\d{2}:\d{2}/g, '')
+        .replace(/답글|수정|삭제|활동 정지|작성자|URL 복사/g, '')
+        .replace(/\|/g, '');
 
     const lines = processed.split('\n').map(l => l.trim()).filter(l => l.length > 0);
     let result = [];
@@ -54,10 +60,10 @@ function processDialogue() {
 
 function convertNames() {
     let text = document.getElementById('dialogueInput').value;
-    const rawA = document.getElementById('rawName1').value;
-    const rawB = document.getElementById('rawName2').value;
-    const realA = document.getElementById('realName1').value;
-    const realB = document.getElementById('realName2').value;
+    const rawA = document.getElementById('rawName1').value.trim();
+    const rawB = document.getElementById('rawName2').value.trim();
+    const realA = document.getElementById('realName1').value.trim();
+    const realB = document.getElementById('realName2').value.trim();
 
     const regA = new RegExp(rawA.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'), 'g');
     const regB = new RegExp(rawB.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'), 'g');
@@ -99,9 +105,11 @@ function generateHtml() {
 </div>`;
     }).join('\n');
 
-    const finalHtml = `<div style="max-width: 600px; margin: 0 auto; padding: 25px 20px; background-color: ${roomBg};">\n${htmlBlocks}\n</div>`;
-    document.getElementById('previewOutput').style.backgroundColor = roomBg;
-    document.getElementById('previewOutput').innerHTML = htmlBlocks;
+    const finalHtml = `<div style="max-width: 600px; margin: 0 auto; padding: 25px 20px; background-color: ${roomBg}; min-height: 450px;">\n${htmlBlocks}\n</div>`;
+    
+    const preview = document.getElementById('previewOutput');
+    preview.innerHTML = htmlBlocks;
+    preview.style.backgroundColor = roomBg;
     document.getElementById('htmlCodeOutput').value = finalHtml;
 }
 
