@@ -29,7 +29,6 @@ function processDialogue() {
     const input = document.getElementById('dialogueInput').value;
     if (!rawA || !rawB) { alert("인식 이름을 입력해 주세요."); return; }
 
-    // '작성일시' 삭제 로직은 제외하고 기존 필터링만 유지
     let processed = input
         .replace(/프로필/g, '')
         .replace(/\d{4}\.\d{2}\.\d{2}\./g, '')
